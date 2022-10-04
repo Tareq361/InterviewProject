@@ -1,0 +1,70 @@
+<div [hidden]="submitted" style="width: 100px;margin: 0 auto;
+    width:40%" class="shadow-lg p-3 mb-5 bg-white rounded">
+  <h3>Add Patient</h3>
+
+  <form [formGroup]="addpatientForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="title"><strong>Name</strong></label>
+      <input type="text" class="form-control" id="title" formControlName="name">
+      <small *ngIf="title?.invalid && title?.touched" class="text-danger">Name is required</small>
+    </div>
+
+    <div class="form-group">
+      <label for="age"><strong>Age</strong></label>
+      <input type="number" class="form-control" id="age" formControlName="age" name="age">
+    </div>
+
+    <div class="form-group">
+      <label for="dob"><strong>Date of Birth</strong></label>
+      <input type="date" class="form-control" id="dob" formControlName="dob" name="dob">
+    </div>
+    <div class="form-group">
+      <label for="gender"><strong>Choose Gender:</strong></label>
+
+      <select class="form-select" aria-label="multiple select example"  name="gender" id="gender" formControlName="gender">
+        <option required >Male</option>
+        <option required >Female</option>
+
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="pp"><strong>Profile Picture</strong></label>
+      <input type="file" (change)="onFileChanged($event)" class="form-control" id="pp" name="pp">
+    </div>
+    <input type="text" class="form-control" id="iname" formControlName="imageName" name="iname" hidden>
+    <div class="form-group">
+      <label for="email"><strong>Email</strong></label>
+      <input type="text" class="form-control" id="email" formControlName="email" name="email">
+      <small *ngIf="email?.invalid && email?.touched" class="text-danger">Valid email address is required</small>
+    </div>
+    <div class="form-group">
+      <label for="pn"><strong>Phone Number</strong></label>
+      <input type="text" class="form-control" id="pn" formControlName="phoneNumber" name="pn">
+      <small *ngIf="phone?.invalid && phone?.touched" class="text-danger">Valid phone number is required</small>
+    </div>
+    <div class="form-group">
+      <label for="ad"><strong>Address</strong></label>
+      <input type="text" class="form-control" id="ad" formControlName="address" name="ad">
+
+    </div>
+    <div class="form-group">
+    <div class="row g-3" formGroupName="familylist">
+      <label for="info"><strong>Family Information</strong></label>
+      <div class="col-sm" id="info">
+        <input type="text" class="form-control" placeholder="Name" formControlName="name" aria-label="Name">
+      </div>
+      <div class="col-sm">
+        <input type="text" class="form-control" placeholder="Relation" formControlName="relation" aria-label="Relation">
+      </div>
+      <div class="col-sm">
+        <input type="text" class="form-control" placeholder="Phone Number" formControlName="phoneNumber" aria-label="Phone Number">
+      </div>
+    </div>
+    </div>
+<br>
+
+    <button type="submit" class="btn btn-success" [disabled]="!addpatientForm.valid">Submit</button>
+
+  </form>
+</div>
+

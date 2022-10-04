@@ -1,0 +1,27 @@
+<h2 style="text-align: center;">Patient List</h2>
+
+<div class="row">
+  <div class="col-sm-3 rounded" *ngFor="let patient of patients | async">
+    <div class="card box">
+      <div class="card-body">
+        <img src="data:image/png;base64,{{patient.image}}" width="100px" height="100px" class="mx-auto d-block rounded-circle" />
+        <h5 class="card-title text-center">{{patient.name}}</h5>
+        <p class="card-text"><strong>Age :</strong> {{patient.age}} year</p>
+
+        <p class="card-text"><i class="fa-solid fa-person"></i> {{patient.gender}}</p>
+        <p class="card-text"><i class="fa-sharp fa-solid fa-phone"></i> {{patient.phoneNumber}}</p>
+        <div class="card-footer">
+          <div class="btn-group" role="group" aria-label="...">
+            <a routerLink="Update/{{patient.id}}" class="btn btn-outline-success card-link">Update</a>
+            <a (click)="open(patient)" class="btn btn-outline-primary card-link">Details</a>
+            <a (click)="deleteBook(patient.id)" class="btn btn-outline-danger card-link">Delete</a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
